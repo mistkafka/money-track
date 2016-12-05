@@ -14,6 +14,11 @@
     "lodash": "^4.15.0",
     "mongodb": "^2.2.8",
     "mongoose": "^4.6.0",
-    "morgan": "~1.7.0"
+    "morgan": "~1.7.0",
+    "request": "^2.79.0",
+    "request-promise": "^4.1.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0"
   }
 }
