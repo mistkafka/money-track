@@ -12,7 +12,7 @@ program
 
 co(function *() {
     let requestOpt = {
-        uri: 'http://localhost:3000/api1/track/list'
+        uri: `http://${process.env.MT_HOST || 'localhost:3000'}/api1/track/list`
     };
     request(requestOpt).then((res) => {
         let tracks = JSON.parse(res).data;
