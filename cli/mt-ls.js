@@ -5,6 +5,7 @@ const co = require('co');
 const prompt = require('co-prompt');
 const request = require('request-promise');
 const tto = require('terminal-table-output').create();
+const moment = require('moment');
 
 program
     .usage('[options]')
@@ -20,7 +21,7 @@ co(function *() {
         tto.pushrow(['time', 'money', 'tags', 'note']);
         tto.line('-');
         tracks.forEach((track) => {
-            tto.pushrow([track.time, track.money, track.tags, track.note]);
+            tto.pushrow([moment(track.time).format('MM-DD-YYYY'), track.money, track.tags, track.note]);
         });
         tto.line('-');
         tto.print(true);

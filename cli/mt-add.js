@@ -9,13 +9,18 @@ program
     .usage('[options] <money>')
     .option('-t, --tags <tags>', 'track tags', /^.+$/i, '')
     .option('-n, --note <note>', 'track note', /^.+$/i, '')
+    .option('-i, --income', 'income money')
     .action((money) => {
         co(function *() {
+            money = -Number.parseFloat(money).toFixed(2, 10);
+            if (program.income) {
+                money = -money;
+            }
             let requestOpt = {
                 uri: `http://${process.env.MT_HOST || 'localhost:3000'}/api1/track/add`,
                 method: 'POST',
                 body: {
-                    money: Number.parseFloat(money).toFixed(2, 10),
+                    money: money,
                     tags: program.tags.replace(/(\s)|(,$)/g, ''),
                     note: program.note,
                 },
